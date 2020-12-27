@@ -1,0 +1,16 @@
+2010 .. base 10
+cvt to base 4
+
+here we move from bigger base (10) to smaller (4)
+
+(2* 4^3) + (0 * 4^2) + (1 * 4^1) + (0 * 4^0) = 
+
+128 + 0 +  4 + 0  = 132
+
+to convert from any base to another. We basically convert from that base to base 10 and then to the next base
+
+
+1000 ... binary (base  2) ...1000
+
+1 * 2^3 = 8-base10
+
