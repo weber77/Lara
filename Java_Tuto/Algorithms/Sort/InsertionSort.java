@@ -1,46 +1,43 @@
-import java.util.Arrays;
 import java.util.Random;
+import java.util.Arrays;
 
-public class SelectionSort {
+public class InsertionSort {
     static int[] data;
     static Random rand = new Random();
-
     public static void main(String[] args) {
 
         data = new int[10];
+
         for (int i = 0; i < data.length; i++) {
-            data[i] = 10 + rand.nextInt(90);
+            data[i] = rand.nextInt(100);
         }
 
         System.out.println("Unsorted Array: " + Arrays.toString(data)+ "\n");
 
         sort();
 
-
     }
 
-    public static void sort() { // n!
-        int smallest;
 
-        for (int i = 0; i < data.length -1; i++) {
-            smallest = i;
+    public static void sort() {
+        int insert;
 
-            for (int j = i+1 ; j < data.length; j++) 
-                if(data[j] < data[smallest])
-                    smallest = j; 
-            
+        for (int next = 1; next < data.length; next++) {
+            insert = data[next];
 
-            swap(i, smallest);
-            printPass( i+1, smallest);
+            int moveItem = next;
+
+            while( moveItem >0 && data[ moveItem -1] > insert)
+            {
+                data[moveItem] = data[moveItem -1];
+                moveItem--;
+            }
+
+            data[moveItem] = insert;
+            printPass(next, moveItem); //GitHub -->
+
         }
     }
-
-    public static void swap(int a, int b) {
-        int temp = data[a];
-        data[a] = data[b];
-        data[b] = temp;
-    }
-
 
     public static void printPass(int pass, int index) {
         System.out.printf("after pass %2d :", pass);
@@ -61,10 +58,14 @@ public class SelectionSort {
         
         
     }
-
-
-
-
-
+    
 }
-//1  2  13 48 46 513 123 564 .. i = 0  j = 1
+
+
+//654, 135, 34, 864, 543, 1, 21, 546, 84, 984, 63, 123
+/**
+    135, 654,  34, 864, 543, 1, 21, 546, 84, 984, 63, 123
+    34, 135, 654, 864, 543, 1, 21, 546, 84, 984, 63, 123
+    34, 135, 654, 864, 543, 1, 21, 546, 84, 984, 63, 123
+ * 
+ */
